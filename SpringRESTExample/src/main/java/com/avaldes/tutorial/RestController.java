@@ -30,7 +30,7 @@ public class RestController {
 	
 	public RestController() {
 		// pre-initialize the list of issuers available ...
-		
+		issuers.put("안녕", new Issuer("안녕", "안녕 안녕", "안녕", "안녕"));
 		issuers.put("ATEN", new Issuer("ATEN", "A10 Networks Inc", "corp", "USA"));
 		issuers.put("AAPL", new Issuer("AAPL", "Apple Inc", "corp", "USA"));
 		issuers.put("T", new Issuer("T", "AT&T", "corp", "USA"));
