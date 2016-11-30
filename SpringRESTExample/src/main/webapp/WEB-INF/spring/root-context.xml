@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<context:component-scan base-package="com.avaldes.tutorial" />
+	
+			<!-- mySQL DB연결위한 작업 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost/test"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="0000"></property>
+	</bean>
+	<!-- 아래 코드를 추가하면 TimeDAO에 어노테이션을 쓰지않고도 스프링이 관리하는 클래스가된다. 왜냐하면 아래처럼 xml에서 
+		설정을 해주기때문이다. -->
+	<!-- com.avaldes.tutorial.TimeDAO 클래스의 객체를 만들고 이 객체의 프로퍼티를 만드는데 이때 property는 
+		setter메소드를 기반으로 처리되므로 해당 클래스에 setter메소드가 있어야한다. 결국, 아래 코드는 dataSource라는 id로 
+		있는 bean을 참조하여 이름이 ds인 프로퍼티를 추가하는 것이다. -->
+	<bean class="com.avaldes.tutorial.TimeDao">
+		<property name="ds" ref="dataSource"></property>
+	</bean>
+	
+	
 </beans>
