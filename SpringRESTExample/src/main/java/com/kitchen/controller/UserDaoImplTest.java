@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 import com.kitchen.dao.UserDao;
+import com.kitchen.model.User;
 
 public class UserDaoImplTest extends AbstractTest{
 
@@ -17,39 +18,38 @@ public class UserDaoImplTest extends AbstractTest{
 		System.out.println("test---------------------------");
 	}
 	
-//	@Test
-//	public void getTimeTest() {
-//		System.out.println("getTimeTest---------------------------");
-//		logger.info(""+dao.getUser("바네싸3"));
-//		System.out.println("getTimeTest---------------------------");
-//	}
+	@Test
+	public void getTimeTest() {
+		System.out.println("getTimeTest---------------------------");
+		logger.info(""+dao.get("바네싸3"));
+		System.out.println("getTimeTest---------------------------");
+	}
 	
-//	@Test
-//	public void registerTest(){
-//		MemberVO vo = new MemberVO();
-//		System.out.println("registerTest---------------------------");
-//		vo.setUserid("양송이2");
-//		vo.setUserpw("ejpw");
-//		vo.setUsername("ejg");
-//		vo.setEmail("ej@g.com");
-//		
-//		// DB에 넣고 DB테이블에서 직접 확인해봐야 한다.
-//		dao.register(vo);
-//		System.out.println("registerTest---------------------------");
-//	}
-//	
-//	@Test
-//	public void getTest(){
-//		System.out.println("getTest---------------------------");
-//		logger.info(""+dao.get("양송이1"));
-//		System.out.println("getTest---------------------------");
-//	}
-//	
-//	@Test
-//	public void getListTest(){
-//		System.out.println("getListTest---------------------------");
-//		logger.info(""+dao.getList());
-//		System.out.println("getListTest---------------------------");
-//	}
+	@Test
+	public void registerTest(){
+		User vo = new User();
+		System.out.println("registerTest---------------------------");
+		vo.setId("양송이1");
+		vo.setName("양송이11");
+		vo.setPassword("aaa");
+		
+		// DB에 넣고 DB테이블에서 직접 확인해봐야 한다.
+		dao.register(vo);
+		System.out.println("registerTest---------------------------");
+	}
+	
+	@Test
+	public void getTest(){
+		System.out.println("getTest---------------------------");
+		logger.info(""+dao.get("양송이11"));
+		System.out.println("getTest---------------------------");
+	}
+	
+	@Test
+	public void getListTest(){
+		System.out.println("getListTest---------------------------");
+		logger.info(""+dao.getList());
+		System.out.println("getListTest---------------------------");
+	}
 	
 }// class

@@ -5,10 +5,7 @@ import java.util.List;
 import com.kitchen.model.User;
 
 public interface UserDao {
-
-	public void insert(User user);
-	public void delete(String id);
-	public String getUser(String id);
+	public void register(User user);
+	public User get(String userid);
 	public List<User> getList();
-	
 }

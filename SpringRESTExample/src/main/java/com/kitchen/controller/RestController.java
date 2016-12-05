@@ -3,8 +3,11 @@ package com.kitchen.controller;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,13 +20,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kitchen.dao.UserDao;
 import com.kitchen.model.Issuer;
+import com.kitchen.model.User;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class RestController {
+	
+	@Inject
+	private UserDao userdao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	private Map<String, Issuer> issuers = new HashMap<String, Issuer>();
@@ -59,6 +67,14 @@ public class RestController {
 		
 		return "status";
 	}
+	
+/*	@RequestMapping(value="/users", method=RequestMethod.GET)
+	@ResponseBody
+	public List<User> getAllUsers() {
+		logger.info("Inside getAllUers() method...");
+		
+		return userdao.getList();
+	}*/
 	
 	@RequestMapping(value="/issuers", method=RequestMethod.GET)
 	@ResponseBody
