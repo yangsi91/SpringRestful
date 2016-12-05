@@ -1,4 +1,4 @@
-package com.avaldes.model;
+package com.kitchen.model;
 
 public class Issuer {
 	private String ticker;

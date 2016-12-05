@@ -1,4 +1,4 @@
-package com.avaldes.tutorial;
+package com.kitchen.controller;
 
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.avaldes.tutorial;
+package com.kitchen.dao;
 
 import java.util.List;
 

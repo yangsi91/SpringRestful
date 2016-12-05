@@ -1,4 +1,4 @@
-package com.avaldes.tutorial;
+package com.kitchen.controller;
 
 import javax.inject.Inject;
 

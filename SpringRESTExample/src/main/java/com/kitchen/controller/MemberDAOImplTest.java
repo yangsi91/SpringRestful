@@ -1,9 +1,11 @@
-package com.avaldes.tutorial;
+package com.kitchen.controller;
 
 import javax.inject.Inject;
 
 import org.junit.Test;
-import com.avaldes.domain.MemberVO;
+
+import com.kitchen.dao.MemberDAO;
+import com.kitchen.model.Member;
 
 public class MemberDAOImplTest extends AbstractTest{
 
@@ -17,18 +19,18 @@ public class MemberDAOImplTest extends AbstractTest{
 		System.out.println("test---------------------------");
 	}
 	
-	@Test
+//	@Test
 	public void getTimeTest() {
 		System.out.println("getTimeTest---------------------------");
 		logger.info(""+dao.getTime());
 		System.out.println("getTimeTest---------------------------");
 	}
 	
-	@Test
+//	@Test
 	public void registerTest(){
-		MemberVO vo = new MemberVO();
+		Member vo = new Member();
 		System.out.println("registerTest---------------------------");
-		vo.setUserid("양송이2");
+		vo.setUserid("양송이4");
 		vo.setUserpw("ejpw");
 		vo.setUsername("ejg");
 		vo.setEmail("ej@g.com");

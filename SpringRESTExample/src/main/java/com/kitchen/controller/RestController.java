@@ -1,4 +1,4 @@
-package com.avaldes.tutorial;
+package com.kitchen.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.avaldes.model.Issuer;
+import com.kitchen.model.Issuer;
 
 /**
  * Handles requests for the application home page.
@@ -46,7 +46,7 @@ public class RestController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		

@@ -1,8 +1,8 @@
-package com.avaldes.domain;
+package com.kitchen.model;
 
 import java.sql.Date;
 
-public class MemberVO {
+public class Member {
 
 	String userid;
 	String userpw;

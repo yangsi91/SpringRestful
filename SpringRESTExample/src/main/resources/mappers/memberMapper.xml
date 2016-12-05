@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.avaldes.mapper.MemberMapper">
+<mapper namespace="com.kitchen.mapper.MemberMapper">
 
 	<!-- 이거에 접근할 때 namespace.id 로 접근한다. -->
 	<!-- resultType은 자바의 타입과 매핑되는 것이 있다. 여기선 string이 java.lang.String과 매핑 -->
@@ -22,14 +22,14 @@
 				<package name = "org.zerock.domain"/>
 			</typeAliases>		
 	-->
-	<select id="get" resultType="com.avaldes.domain.MemberVO">
+	<select id="get" resultType="com.kitchen.model.Member">
 		select *
 		from tbl_member
 		where userid = #{userid}
 	
 	</select>
 	
-	<select id="getList" resultType="com.avaldes.domain.MemberVO">
+	<select id="getList" resultType="com.kitchen.model.Member">
 		select *
 		from tbl_member;
 	</select>
