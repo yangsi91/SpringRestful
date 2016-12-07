@@ -33,4 +33,15 @@
 		select *
 		from tbl_member;
 	</select>
+	<delete id="delete" parameterType="String">
+		delete from tbl_member where userid = #{userid};
+	</delete>
+	
+	<update id="update" parameterType="String">
+	    update tbl_member
+		set userpw = #{userpw}
+	      , username = #{username}
+	      , email = #{email}
+		where userid = #{userid};
+	</update>
 </mapper>

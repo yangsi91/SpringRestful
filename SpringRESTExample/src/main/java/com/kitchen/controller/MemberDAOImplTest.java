@@ -1,9 +1,7 @@
 package com.kitchen.controller;
 
 import javax.inject.Inject;
-
 import org.junit.Test;
-
 import com.kitchen.dao.MemberDAO;
 import com.kitchen.model.Member;
 
@@ -12,7 +10,7 @@ public class MemberDAOImplTest extends AbstractTest{
 	@Inject
 	private MemberDAO dao;
 	
-	@Test
+//	@Test
 	public void test() {
 		System.out.println("test---------------------------");
 		logger.info(""+dao);
@@ -26,32 +24,41 @@ public class MemberDAOImplTest extends AbstractTest{
 		System.out.println("getTimeTest---------------------------");
 	}
 	
-//	@Test
+	@Test
 	public void registerTest(){
 		Member vo = new Member();
 		System.out.println("registerTest---------------------------");
-		vo.setUserid("양송이4");
+		vo.setUserid("양송이2");
 		vo.setUserpw("ejpw");
 		vo.setUsername("ejg");
-		vo.setEmail("ej@g.com");
+		vo.setEmail("hello_song@g.com");
 		
 		// DB에 넣고 DB테이블에서 직접 확인해봐야 한다.
-		dao.register(vo);
+		dao.update(vo);
 		System.out.println("registerTest---------------------------");
 	}
 	
-	@Test
+//	@Test
 	public void getTest(){
 		System.out.println("getTest---------------------------");
 		logger.info(""+dao.get("양송이1"));
 		System.out.println("getTest---------------------------");
 	}
 	
-	@Test
+//	@Test
 	public void getListTest(){
 		System.out.println("getListTest---------------------------");
 		logger.info(""+dao.getList());
 		System.out.println("getListTest---------------------------");
 	}
+	
+//	@Test
+	public void deleteTest(){
+		System.out.println("deleteTest---------------------------");
+		logger.info(""+dao.delete("바네싸3"));
+		System.out.println("deleteTest---------------------------");
+	}
+	
+	
 	
 }// class

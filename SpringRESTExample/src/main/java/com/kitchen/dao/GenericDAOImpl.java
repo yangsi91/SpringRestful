@@ -35,5 +35,16 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 	public List<E> getList() {
 		return sqlSession.selectList(namespace + ".getList");
 	}
+	
+	@Override
+	public int delete(K userid) {
+		return sqlSession.delete(namespace + ".delete", userid); 
+	}
+	
+	@Override
+	public int update(E vo) {
+		return sqlSession.update(namespace + ".update", vo); 
+	}
+	
 
 }// class
