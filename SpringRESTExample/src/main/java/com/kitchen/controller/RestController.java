@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kitchen.dao.UserDao;
-import com.kitchen.model.Issuer;
+import com.kitchen.model.___Issuer;
 import com.kitchen.model.User;
 
 /**
@@ -34,21 +34,21 @@ public class RestController {
 	private UserDao userdao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
-	private Map<String, Issuer> issuers = new HashMap<String, Issuer>();
+	private Map<String, ___Issuer> issuers = new HashMap<String, ___Issuer>();
 	
 	public RestController() {
 		// pre-initialize the list of issuers available ...
-		issuers.put("안녕", new Issuer("안녕", "안녕 안녕", "안녕", "안녕"));
-		issuers.put("ATEN", new Issuer("ATEN", "A10 Networks Inc", "corp", "USA"));
-		issuers.put("AAPL", new Issuer("AAPL", "Apple Inc", "corp", "USA"));
-		issuers.put("T", new Issuer("T", "AT&T", "corp", "USA"));
-		issuers.put("CSCO", new Issuer("CSCO", "Cisco Systems, Inc.", "corp", "USA"));
-		issuers.put("CTXS", new Issuer("CTXS", "Citrix Systems, Inc.", "corp", "USA"));
-		issuers.put("GOOGL", new Issuer("GOOGL", "Google Inc", "corp", "USA"));
-		issuers.put("IBM", new Issuer("IBM", "IBM", "corp", "USA"));
-		issuers.put("JNPR", new Issuer("JNPR", "Juniper Networks, Inc.", "corp", "USA"));
-		issuers.put("MSFT", new Issuer("MSFT", "Microsoft Corporation", "corp", "USA"));
-		issuers.put("ORCL", new Issuer("ORCL", "Oracle Corporation", "corp", "USA"));
+		issuers.put("안녕", new ___Issuer("안녕", "안녕 안녕", "안녕", "안녕"));
+		issuers.put("ATEN", new ___Issuer("ATEN", "A10 Networks Inc", "corp", "USA"));
+		issuers.put("AAPL", new ___Issuer("AAPL", "Apple Inc", "corp", "USA"));
+		issuers.put("T", new ___Issuer("T", "AT&T", "corp", "USA"));
+		issuers.put("CSCO", new ___Issuer("CSCO", "Cisco Systems, Inc.", "corp", "USA"));
+		issuers.put("CTXS", new ___Issuer("CTXS", "Citrix Systems, Inc.", "corp", "USA"));
+		issuers.put("GOOGL", new ___Issuer("GOOGL", "Google Inc", "corp", "USA"));
+		issuers.put("IBM", new ___Issuer("IBM", "IBM", "corp", "USA"));
+		issuers.put("JNPR", new ___Issuer("JNPR", "Juniper Networks, Inc.", "corp", "USA"));
+		issuers.put("MSFT", new ___Issuer("MSFT", "Microsoft Corporation", "corp", "USA"));
+		issuers.put("ORCL", new ___Issuer("ORCL", "Oracle Corporation", "corp", "USA"));
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class RestController {
 	
 	@RequestMapping(value="/issuers", method=RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Issuer> getAllIssuers() {
+	public Map<String, ___Issuer> getAllIssuers() {
 		logger.info("Inside getAllIssuers() method...");
 		
 		return issuers;
@@ -86,8 +86,8 @@ public class RestController {
 	
 	@RequestMapping(value="/issuer/{ticker}", method=RequestMethod.GET)
 	@ResponseBody
-	public Issuer getIssuerByTicker(@PathVariable("ticker") String ticker) {
-		Issuer myIssuer = issuers.get(ticker); 
+	public ___Issuer getIssuerByTicker(@PathVariable("ticker") String ticker) {
+		___Issuer myIssuer = issuers.get(ticker); 
 		
 		if (myIssuer != null) {
 			logger.info("Inside getIssuerByTicker, returned: " + myIssuer.toString());
@@ -99,8 +99,8 @@ public class RestController {
 
 	@RequestMapping(value="/issuer/delete/{ticker}", method=RequestMethod.GET)
 	@ResponseBody
-	public Issuer deleteIssuerByTicker(@PathVariable("ticker") String ticker) {
-		Issuer myIssuer = issuers.remove(ticker); 
+	public ___Issuer deleteIssuerByTicker(@PathVariable("ticker") String ticker) {
+		___Issuer myIssuer = issuers.remove(ticker); 
 		
 		if (myIssuer != null) {
 			logger.info("Inside deleteIssuerByTicker, deleted: " + myIssuer.toString());
@@ -113,12 +113,12 @@ public class RestController {
 	@RequestMapping(value="/issuer/create", method=RequestMethod.GET)
 	public ModelAndView addIssuer() {
 		
-		return new ModelAndView("addIssuer", "command", new Issuer());
+		return new ModelAndView("addIssuer", "command", new ___Issuer());
 	}
 	
 	@RequestMapping(value="/issuer/addIssuer", method=RequestMethod.POST)
 	@ResponseBody
-	public Issuer addIssuer(@ModelAttribute("issuer") Issuer issuer) {
+	public ___Issuer addIssuer(@ModelAttribute("issuer") ___Issuer issuer) {
 		
 		if (issuer != null) {
 			logger.info("Inside addIssuer, adding: " + issuer.toString());

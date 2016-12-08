@@ -2,13 +2,13 @@ package com.kitchen.controller;
 
 import javax.inject.Inject;
 import org.junit.Test;
-import com.kitchen.dao.MemberDAO;
-import com.kitchen.model.Member;
+import com.kitchen.dao.___MemberDAO;
+import com.kitchen.model.___Member;
 
 public class MemberDAOImplTest extends AbstractTest{
 
 	@Inject
-	private MemberDAO dao;
+	private ___MemberDAO dao;
 	
 //	@Test
 	public void test() {
@@ -26,7 +26,7 @@ public class MemberDAOImplTest extends AbstractTest{
 	
 	@Test
 	public void registerTest(){
-		Member vo = new Member();
+		___Member vo = new ___Member();
 		System.out.println("registerTest---------------------------");
 		vo.setUserid("양송이2");
 		vo.setUserpw("ejpw");

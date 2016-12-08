@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kitchen.dao.UserDao;
-import com.kitchen.model.Issuer;
-import com.kitchen.model.Member;
+import com.kitchen.model.___Issuer;
+import com.kitchen.model.___Member;
 import com.kitchen.model.User;
 
 @Controller
