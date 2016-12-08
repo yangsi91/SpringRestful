@@ -24,11 +24,11 @@ public class UserDaoImplTest extends AbstractTest{
 		System.out.println("getTimeTest---------------------------");
 	}
 	
-//	@Test
+	@Test
 	public void registerTest(){
 		User vo = new User();
 		System.out.println("registerTest---------------------------");
-		vo.setId("test1");
+		vo.setId("test11");
 		vo.setName("양송이11");
 		vo.setPassword("aaa");
 		
@@ -51,7 +51,7 @@ public class UserDaoImplTest extends AbstractTest{
 		System.out.println("getListTest---------------------------");
 	}
 	
-	@Test
+//	@Test
 	public void deleteTest(){
 		System.out.println("deleteTest---------------------------");
 //		logger.info("" + dao.delete("test1"));

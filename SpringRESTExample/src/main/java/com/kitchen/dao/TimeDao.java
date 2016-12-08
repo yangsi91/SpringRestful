@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 // 지금 이 클래스는 스프링 프로젝트의 기본 패키지가 아니므로 Spring이 관리하는 패키지가 아니다. 그래서 따로 설정해주어야 한다.
 //@Repository
-public class ___TimeDao {
+public class TimeDao {
 
 //	@Inject
 	DataSource ds;// DataSource타입의 bean이 현재는 root-context에 하나밖에 없으므로  bean의 id와

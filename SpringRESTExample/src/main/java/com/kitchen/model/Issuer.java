@@ -1,15 +1,15 @@
 package com.kitchen.model;
 
-public class ___Issuer {
+public class Issuer {
 	private String ticker;
 	private String issuerName;
 	private String issuerType;
 	private String country;
 	
-	public ___Issuer() {
+	public Issuer() {
 	}
 	
-	public ___Issuer(String ticker, String issuerName, String issuerType, String country) {
+	public Issuer(String ticker, String issuerName, String issuerType, String country) {
 		setTicker(ticker);
 		setIssuerName(issuerName);
 		setIssuerType(issuerType);

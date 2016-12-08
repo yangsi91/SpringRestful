@@ -2,7 +2,7 @@ package com.kitchen.model;
 
 import java.sql.Date;
 
-public class ___Member {
+public class Member {
 
 	String userid;
 	String userpw;

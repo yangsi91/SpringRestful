@@ -21,7 +21,7 @@
 	<!-- com.avaldes.tutorial.TimeDAO 클래스의 객체를 만들고 이 객체의 프로퍼티를 만드는데 이때 property는 
 		setter메소드를 기반으로 처리되므로 해당 클래스에 setter메소드가 있어야한다. 결국, 아래 코드는 dataSource라는 id로 
 		있는 bean을 참조하여 이름이 ds인 프로퍼티를 추가하는 것이다. -->
-	<bean class="com.kitchen.dao.___TimeDao">
+	<bean class="com.kitchen.dao.TimeDao">
 		<property name="ds" ref="dataSource"></property>
 	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

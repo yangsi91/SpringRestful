@@ -2,7 +2,7 @@ package com.kitchen.dao;
 
 import java.util.List;
 
-public interface ___GenericDAO<E, K> {
+public interface GenericDAO<E, K> {
 
 	public K getTime();
 	public void register(E vo);
