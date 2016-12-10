@@ -1,7 +1,16 @@
 package com.kitchen.controller;
 
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+
 import javax.inject.Inject;
+
+import org.json.JSONObject;
 import org.junit.Test;
+import org.springframework.web.client.RestTemplate;
+
 import com.kitchen.dao.UserDao;
 import com.kitchen.model.User;
 
@@ -10,6 +19,8 @@ public class UserDaoImplTest extends AbstractTest{
 	@Inject
 	private UserDao dao;
 	
+	RestTemplate restTemplate;
+
 //	@Test
 	public void test() {
 		System.out.println("test---------------------------");
@@ -24,7 +35,7 @@ public class UserDaoImplTest extends AbstractTest{
 		System.out.println("getTimeTest---------------------------");
 	}
 	
-	@Test
+//	@Test
 	public void registerTest(){
 		User vo = new User();
 		System.out.println("registerTest---------------------------");
@@ -70,6 +81,39 @@ public class UserDaoImplTest extends AbstractTest{
 		// DB에 넣고 DB테이블에서 직접 확인해봐야 한다.
 		dao.update(vo);
 		System.out.println("updateTest---------------------------");
+	}
+	
+	@Test
+	public void testCreate() throws Exception {
+	    
+		String url = "http://localhost:8080/tutorial/user/addUser2";
+		URL object=new URL(url);
+		   HttpURLConnection con = (HttpURLConnection) object.openConnection();
+		 
+		   con.setDoOutput(true);
+		   con.setDoInput(true);
+		   con.setRequestProperty("Content-Type", "application/json");
+		   con.setRequestProperty("Accept", "*/*");
+		   con.setRequestProperty("X-Requested-With", "XMLHttpRequest");
+		   con.setRequestMethod("POST");
+		 
+		   JSONObject obj = new JSONObject();
+		   
+		   obj.put("id", "json테스트");
+		   obj.put("name", "이름ㅆㅓ");
+		   obj.put("passworld", "패스워드");
+		
+		String body = obj.toString();
+		
+		OutputStreamWriter wr= new OutputStreamWriter(con.getOutputStream());
+		 
+		   wr.write(body);
+		   wr.flush();
+		System.out.println("testCreate---------------------------");
+//		restTemplate.postForObject(uri, body, String.class);
+	    
+		dao.getUser("json테스트");
+	    System.out.println("testCreate---------------------------");
 	}
 	
 }// class

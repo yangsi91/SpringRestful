@@ -112,7 +112,6 @@ public class RestController {
 
 	@RequestMapping(value="/issuer/create", method=RequestMethod.GET)
 	public ModelAndView addIssuer() {
-		
 		return new ModelAndView("addIssuer", "command", new Issuer());
 	}
 	
