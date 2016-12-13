@@ -98,7 +98,6 @@ public class UserController {
 		return ""+addUser;
 	}
 	  
-	
 	@RequestMapping(value="/user/delete/{id}", method=RequestMethod.GET)
 	@ResponseBody
 	public User deleteIssuerByTicker(@PathVariable("id") String id) {
@@ -111,7 +110,4 @@ public class UserController {
 		}
 		return delUser;
 	}
-	
-	
-	
 }

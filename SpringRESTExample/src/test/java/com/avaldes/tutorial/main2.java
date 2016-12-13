@@ -30,7 +30,7 @@ public static void main(String args[]) {
 	 
 	   JSONObject obj = new JSONObject();
 	   
-	   obj.put("id", "java");
+	   obj.put("id", "java2");
 	   obj.put("name", "hello");
 	   obj.put("password", "OH");
 	   	      

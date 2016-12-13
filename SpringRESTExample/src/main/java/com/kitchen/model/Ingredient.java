@@ -6,6 +6,8 @@ public class Ingredient {
 	private String eng_names;
 	private String img_location;
 	private int type_id;
+	private String created;
+	private String updated;
 	
 	public int getIngredient_id() {
 		return ingredient_id;
@@ -37,5 +39,16 @@ public class Ingredient {
 	public void setType_id(int type_id) {
 		this.type_id = type_id;
 	}
-	
+	public String getCreated() {
+		return created;
+	}
+	public void setCreated(String created) {
+		this.created = created;
+	}
+	public String getUpdated() {
+		return updated;
+	}
+	public void setUpdated(String updated) {
+		this.updated = updated;
+	}
 }

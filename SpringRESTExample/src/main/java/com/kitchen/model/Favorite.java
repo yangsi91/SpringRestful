@@ -1,36 +1,29 @@
 package com.kitchen.model;
 
-public class Recipe {
+public class Favorite {
+	private int favorite_id;
 	private int recipe_id;
-	private String title;
-	private String details;
-	private int details_id;
+	private int product_id;
 	private String created;
 	private String updated;
 	
+	public int getFavorite_id() {
+		return favorite_id;
+	}
+	public void setFavorite_id(int favorite_id) {
+		this.favorite_id = favorite_id;
+	}
 	public int getRecipe_id() {
 		return recipe_id;
 	}
 	public void setRecipe_id(int recipe_id) {
 		this.recipe_id = recipe_id;
 	}
-	public String getTitle() {
-		return title;
+	public int getProduct_id() {
+		return product_id;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getDetails() {
-		return details;
-	}
-	public void setDetails(String details) {
-		this.details = details;
-	}
-	public int getDetails_id() {
-		return details_id;
-	}
-	public void setDetails_id(int details_id) {
-		this.details_id = details_id;
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
 	public String getCreated() {
 		return created;
@@ -44,5 +37,4 @@ public class Recipe {
 	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
-	
 }
