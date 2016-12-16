@@ -14,18 +14,18 @@
 
 	<select id="getData" resultType="com.kitchen.model.IngredientImg">
 		select *
-		from users
-		where ingredient_id = #{ingredient_id};
+		from ingredient_img
+		where img_id = #{img_id};
 	
 	</select>
 	
 	<select id="getList" resultType="com.kitchen.model.IngredientImg">
 		select *
-		from ingredient;
+		from ingredient_img;
 	</select>
 	
 	<delete id="delete" parameterType="int">
-		delete from ingredient where ingredient_id = #{ingredient_id};
+		delete from ingredient_img where img_id = #{img_id};
 	</delete>
 	
 </mapper>
