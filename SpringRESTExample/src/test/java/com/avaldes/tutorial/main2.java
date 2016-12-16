@@ -10,12 +10,12 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.kitchen.model.User;
+import com.kitchen.model.Ingredient;;
 
 public class main2 {
 
 public static void main(String args[]) {
-		String url="http://localhost:8080/tutorial/user/addUser2";
+		String url="http://192.168.0.20:8080/tutorial/api/ingredient/create";
 	  try {
 	   URL object=new URL(url);
 	 
@@ -30,9 +30,15 @@ public static void main(String args[]) {
 	 
 	   JSONObject obj = new JSONObject();
 	   
-	   obj.put("id", "java2");
+/*	   obj.put("id", "java2");
 	   obj.put("name", "hello");
-	   obj.put("password", "OH");
+	   obj.put("password", "OH");*/
+	   
+	   
+	   obj.put("kor_name", "ingrediKor");
+	   obj.put("eng_names", "ingredientEngs");
+	   obj.put("img_location", "/user/img.jpg");
+	   obj.put("type_id", "2");
 	   	      
 /*	// Array List 만들기
 	   JSONObject params = new JSONObject();
@@ -55,7 +61,8 @@ public static void main(String args[]) {
 	   
 	   ObjectMapper mapper = new ObjectMapper();
 //	   String jsonInString = "{\"id\":\"jsontest\",\"name\":\"your name\",\"password\":\"PPAP\"}";
-	   User user = mapper.readValue(obj.toString(), User.class);
+//	   User user = mapper.readValue(obj.toString(), User.class);
+	   Ingredient user = mapper.readValue(obj.toString(), Ingredient.class);
 	   System.out.println(user);
 
 		

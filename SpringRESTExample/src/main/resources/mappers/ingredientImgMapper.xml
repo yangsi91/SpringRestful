@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kitchen.mapper.IngredientImgMapper">
+
+	<!-- 이거에 접근할 때 namespace.id 로 접근한다. -->
+	<!-- resultType은 자바의 타입과 매핑되는 것이 있다. 여기선 string이 java.lang.String과 매핑 -->
+	
+	<insert id="insert">
+		insert into ingredient_img(ingredient_id, basecode, tags, usage, created)
+		values( #{ingredient_id} , #{basecode}, #{tags}, #{usage}, now() );
+	</insert>
+
+	<select id="getData" resultType="com.kitchen.model.IngredientImg">
+		select *
+		from users
+		where ingredient_id = #{ingredient_id};
+	
+	</select>
+	
+	<select id="getList" resultType="com.kitchen.model.IngredientImg">
+		select *
+		from ingredient;
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from ingredient where ingredient_id = #{ingredient_id};
+	</delete>
+	
+</mapper>

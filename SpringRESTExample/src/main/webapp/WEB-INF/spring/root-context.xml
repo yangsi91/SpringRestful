@@ -12,9 +12,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy">
 		</property>
-		<property name="url" value="jdbc:mysql://localhost/test"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="0000"></property>
+		<property name="url" value="jdbc:mysql://suns.kr/smartkitchen"></property>
+		<property name="username" value="returnzero"></property>
+		<property name="password" value="rzero"></property>
 	</bean>
 	<!-- 아래 코드를 추가하면 TimeDAO에 어노테이션을 쓰지않고도 스프링이 관리하는 클래스가된다. 왜냐하면 아래처럼 xml에서 
 		설정을 해주기때문이다. -->
@@ -34,7 +34,6 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
-	
 	
 	
 </beans>

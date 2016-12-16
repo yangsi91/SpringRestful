@@ -1,6 +1,6 @@
 package com.kitchen.model;
 
-public class Ingredient_img {
+public class IngredientImg {
 	private int img_id;
 	private int ingredient_id;
 	private String basecode;
