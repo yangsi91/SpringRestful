@@ -1,10 +1,12 @@
-package com.kitchen.controller;
+package com.avaldes.tutorial;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -21,31 +23,35 @@ import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 
-import com.kitchen.dao.IngredientDao;
-import com.kitchen.dao.UserDao;
-import com.kitchen.model.Ingredient;
-import com.kitchen.model.User;
+import com.kitchen.dao.IngredientImgDao;
+import com.kitchen.model.IngredientImg;
 
-public class UserDaoImplTest extends AbstractTest {
+public class IngredientImgDaoImplTest extends AbstractTest {
 
 	// private UserDao dao;
 	@Inject
-	private IngredientDao dao;
+	private IngredientImgDao dao;
 
 	RestTemplate restTemplate;
 
-	// @Test
+	@Test
 	public void testDao() {
 		System.out.println("test---------------------------");
 		logger.info("" + dao);
 		System.out.println("test---------------------------");
 	}
 
-//	@Test
+	 @Test
 	public void test() throws IOException {
+		System.out.println("send file test---------------------------");
+		final String FILENAME = "C:/Users/Songyi/git/SpringRestful/SpringRESTExample/src/test/java/com/avaldes/tutorial/test.json";
+		File file = new File(FILENAME);
 		String UPLOAD_URL = "http://localhost:8080/tutorial/api/ingredientImg/curl/upload";
 		int BUFFER_SIZE = 4096;
-		System.out.println("test---------------------------");
+		BufferedReader br = null;
+		FileReader fr = null;
+		
+		/*System.out.println("test---------------------------");
 		logger.info("" + dao);
 		String workingDir = System.getProperty("user.dir");
 		System.out.println("Current working directory : " + workingDir);
@@ -56,8 +62,7 @@ public class UserDaoImplTest extends AbstractTest {
 
 		System.out.println("File to upload: " + filePath);
 
-		BufferedReader br = null;
-		FileReader fr = null;
+		
 
 		try {
 
@@ -92,7 +97,7 @@ public class UserDaoImplTest extends AbstractTest {
 
 			}
 
-		}
+		}*/
 
 		// creates a HTTP connection
 		URL url = new URL(UPLOAD_URL);
@@ -106,13 +111,13 @@ public class UserDaoImplTest extends AbstractTest {
 		httpConn.setDoOutput(true);
 		httpConn.setRequestMethod("POST");
 		// sets file name as a HTTP header
-		httpConn.setRequestProperty("fileName", uploadFile.getName());
+//		httpConn.setRequestProperty("fileName", FILENAME.getName());
 
 		// opens output stream of the HTTP connection for writing data
 		OutputStream outputStream = httpConn.getOutputStream();
 
 		// Opens input stream of the file for reading data
-		FileInputStream inputStream = new FileInputStream(uploadFile);
+		FileInputStream inputStream = new FileInputStream(file);
 
 		byte[] buffer = new byte[BUFFER_SIZE];
 		int bytesRead = -1;
@@ -137,6 +142,7 @@ public class UserDaoImplTest extends AbstractTest {
 		} else {
 			System.out.println("Server returned non-OK code: " + responseCode);
 		}
+		
 		// display what returns the POST request
 		StringBuilder sb = new StringBuilder();
 
@@ -159,24 +165,51 @@ public class UserDaoImplTest extends AbstractTest {
 		} else {
 			System.out.println(httpConn.getResponseMessage());
 		}
-		System.out.println("test---------------------------");
-	}
-
-	// @Test
-	public void getTimeTest() {
-		System.out.println("getTimeTest---------------------------");
-		// logger.info(""+dao.getUser("바네싸3"));
-		System.out.println("getTimeTest---------------------------");
+		System.out.println("send file test---------------------------");
 	}
 
 //	@Test
-	public void registerTest() {
-		Ingredient vo = new Ingredient();
-		System.out.println("registerTest---------------------------");
-		vo.setKor_name("한글명");
-		vo.setEng_names("english names");
-		vo.setImg_location("aa.a.a");
-		vo.setType_id(1);
+	public void registerTest() throws FileNotFoundException {
+		final String FILENAME = "C:/Users/Songyi/git/SpringRestful/SpringRESTExample/src/test/java/com/avaldes/tutorial/test.json";
+		
+		//console에 출력
+		/*BufferedReader br = null;
+		FileReader fr = null;
+
+		try {
+
+			fr = new FileReader(FILENAME);
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+
+			br = new BufferedReader(new FileReader(FILENAME));
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+				if (fr != null)
+					fr.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}*/
+		
+		//file 내용을 디비에 저장
+		File file = new File(FILENAME);
+		FileInputStream  fis = new FileInputStream(file);
+		IngredientImg vo = new IngredientImg();
+		
+		vo.setIngredient_id(1);
+		vo.setBasecode(fis);
+		vo.setTags("yes");
 
 		// DB에 넣고 DB테이블에서 직접 확인해봐야 한다.
 		dao.insert(vo);
@@ -205,18 +238,7 @@ public class UserDaoImplTest extends AbstractTest {
 		System.out.println("deleteTest---------------------------");
 	}
 
-	// @Test
-	public void updateTest() {
-		User vo = new User();
-		System.out.println("updateTest---------------------------");
-		vo.setId("test1");
-		vo.setName("수정ㅇ");
-		vo.setPassword("ㅜ정수정");
-
-		// DB에 넣고 DB테이블에서 직접 확인해봐야 한다.
-		// dao.update(vo);
-		System.out.println("updateTest---------------------------");
-	}
+	
 
 	// @Test
 	public void testCreate() throws Exception {
@@ -251,84 +273,4 @@ public class UserDaoImplTest extends AbstractTest {
 		System.out.println("testCreate---------------------------");
 	}
 
-//	@Test
-	public void createByURL() {
-		String url = "http://192.168.0.20:8080/tutorial/api/ingredient/create";
-		try {
-			URL object = new URL(url);
-
-			HttpURLConnection con = (HttpURLConnection) object.openConnection();
-
-			con.setDoOutput(true);
-			con.setDoInput(true);
-			con.setRequestProperty("Content-Type", "application/json");
-			con.setRequestProperty("Accept", "*/*");
-			con.setRequestProperty("X-Requested-With", "XMLHttpRequest");
-			con.setRequestMethod("POST");
-
-			JSONObject obj = new JSONObject();
-
-			/*
-			 * obj.put("id", "java2"); obj.put("name", "hello");
-			 * obj.put("password", "OH");
-			 */
-
-			obj.put("kor_name", "ingrediKor");
-			obj.put("eng_names", "ingredientEngs");
-			obj.put("img_location", "/user/img.jpg");
-			obj.put("type_id", "2");
-
-			/*
-			 * // Array List 만들기 JSONObject params = new JSONObject();
-			 * params.put("password", "*******"); JSONArray list1 = new
-			 * JSONArray(); list1.put(params);
-			 * 
-			 * JSONObject data = new JSONObject();
-			 * data.put("id","Authentication"); data.put("name", "login");
-			 * data.put("password", "aa");
-			 */
-			OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
-
-			wr.write(obj.toString());
-			// wr.write("hello");
-			wr.flush();
-
-			System.out.println(obj.toString());
-
-			ObjectMapper mapper = new ObjectMapper();
-			// String jsonInString = "{\"id\":\"jsontest\",\"name\":\"your
-			// name\",\"password\":\"PPAP\"}";
-			// User user = mapper.readValue(obj.toString(), User.class);
-			Ingredient user = mapper.readValue(obj.toString(), Ingredient.class);
-			System.out.println(user);
-
-			// display what returns the POST request
-			StringBuilder sb = new StringBuilder();
-
-			int HttpResult = con.getResponseCode();
-
-			if (HttpResult == HttpURLConnection.HTTP_OK) {
-
-				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
-
-				String line = null;
-
-				while ((line = br.readLine()) != null) {
-					sb.append(line + "\n");
-				}
-
-				br.close();
-
-				System.out.println("" + sb.toString());
-
-			} else {
-				System.out.println(con.getResponseMessage());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-
-		}
-
-	}
 }

@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -83,10 +84,11 @@ public class IngredientImgController {
 		}
 		
 		ObjectMapper mapper = new ObjectMapper();
-		IngredientImg addingredientImg = mapper.readValue(body, IngredientImg.class);
+//		IngredientImg addingredientImg = mapper.readValue(body, IngredientImg.class);
 		
-		ingredientImgDao.insert(addingredientImg);
-		return ""+addingredientImg;
+//		ingredientImgDao.insert(addingredientImg);
+		System.out.println(body);
+		return body;
 	}
 	  
 	@RequestMapping(value="/delete/{img_id}", method=RequestMethod.GET)
@@ -102,80 +104,31 @@ public class IngredientImgController {
 		return delIngredientImg;
 	}
 	
-	@RequestMapping(value = "/testcurl", method = RequestMethod.POST)
+	@RequestMapping(value = "/basecode", method = RequestMethod.POST)
 	@ResponseBody
-	public String curltest(@RequestBody String body) throws ParseException, JsonParseException, JsonMappingException, IOException {
-		if (body != null) {
-			logger.info("txt...: \n" + body);
-		} else {
-			logger.info("Inside addUser2...");
-		}
-		System.out.println(body);
-//		ObjectMapper mapper = new ObjectMapper();
-//		Ingredient addingredient = mapper.readValue(body, Ingredient.class);
-//		
-//		ingredientDao.insert(addingredient);
-		return "OK";
-	}
-	
-	@RequestMapping(value="/curl/upload", method=RequestMethod.POST)
-	@ResponseBody
-	public String uploadFileHandler(@RequestBody MultipartFile file) {
-		if(!file.isEmpty()) {
-			return "yes";
-		}
-		else
-			return "no";
-    	/*String fileName = null;
-    	if (!file.isEmpty()) {
-            try {
-                fileName = file.getOriginalFilename();
-                byte[] bytes = file.getBytes();
-                BufferedOutputStream buffStream = 
-                        new BufferedOutputStream(new FileOutputStream(new File("C:/Users/Songyi/git/SpringRestful/SpringRESTExample/tmp/" + fileName)));
-                buffStream.write(bytes);
-                buffStream.close();
-                return "You have successfully uploaded " + fileName;
-            } catch (Exception e) {
-                return "You failed to upload " + fileName + ": " + e.getMessage();
-            }
-        } else {
-            return "Unable to upload. File is empty.";
-        }*/
-    	
-		
-		/*String name = null;
+	public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+//		String name;
 		if (!file.isEmpty()) {
-			name = file.getName();
 			try {
-				
+//				name = file.getOriginalFilename();
 				byte[] bytes = file.getBytes();
-
-				// Creating the directory to store file
-				String rootPath = System.getProperty("user.dir");
-				File dir = new File(rootPath + File.separator + "tmpFiles");
+				File dir = new File("E:/workspace" + "tmpFiles");
 				if (!dir.exists())
 					dir.mkdirs();
-
+				
 				// Create the file on server
 				File serverFile = new File(dir.getAbsolutePath()
-						+ File.separator + name);
+						+ File.separator + file.getOriginalFilename());
 				BufferedOutputStream stream = new BufferedOutputStream(
 						new FileOutputStream(serverFile));
 				stream.write(bytes);
 				stream.close();
-
-				logger.info("Server File Location="
-						+ serverFile.getAbsolutePath());
-
-				return "You successfully uploaded file=" + name;
+				return "success";
 			} catch (Exception e) {
-				return "You failed to upload " + name + " => " + e.getMessage();
+				return "You failed to upload";
 			}
-		
 		} else {
-			return "You failed to upload " + name
-					+ " because the file was empty.";
-		}*/
+			return "You failed to upload ";
+		}
 	}
 }

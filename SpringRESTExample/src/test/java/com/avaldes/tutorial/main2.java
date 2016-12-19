@@ -15,7 +15,7 @@ import com.kitchen.model.Ingredient;;
 public class main2 {
 
 public static void main(String args[]) {
-		String url="http://192.168.0.20:8080/tutorial/api/ingredient/create";
+		String url="http://192.168.0.20:8080/tutorial/api/ingredientImg/create";
 	  try {
 	   URL object=new URL(url);
 	 

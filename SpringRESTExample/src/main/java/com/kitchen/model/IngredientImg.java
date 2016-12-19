@@ -1,9 +1,13 @@
 package com.kitchen.model;
 
+import java.io.FileInputStream;
+
+import org.apache.taglibs.standard.extra.spath.ASCII_CharStream;
+
 public class IngredientImg {
 	private int img_id;
 	private int ingredient_id;
-	private String basecode;
+	private FileInputStream basecode;
 	private String tags;
 	private int usage;
 	private String created;
@@ -21,10 +25,10 @@ public class IngredientImg {
 	public void setIngredient_id(int ingredient_id) {
 		this.ingredient_id = ingredient_id;
 	}
-	public String getBasecode() {
+	public FileInputStream getBasecode() {
 		return basecode;
 	}
-	public void setBasecode(String basecode) {
+	public void setBasecode(FileInputStream basecode) {
 		this.basecode = basecode;
 	}
 	public String getTags() {
