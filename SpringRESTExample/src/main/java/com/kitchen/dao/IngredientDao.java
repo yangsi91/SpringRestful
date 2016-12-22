@@ -1,5 +1,6 @@
 package com.kitchen.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kitchen.model.Ingredient;
@@ -9,5 +10,5 @@ public interface IngredientDao {
 	public Ingredient getIngredient(int ingredient_id);
 //	public void update(Ingredient user);
 	public void delete(int ingredient_id);
-	public List<Ingredient> getList();
+	public HashMap<String,List<Ingredient>> getList();
 }

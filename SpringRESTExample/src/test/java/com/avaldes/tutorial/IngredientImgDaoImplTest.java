@@ -15,11 +15,16 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URI;
 import java.net.URL;
+import java.security.GeneralSecurityException;
+import java.util.Iterator;
 
 import javax.inject.Inject;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 
@@ -40,8 +45,14 @@ public class IngredientImgDaoImplTest extends AbstractTest {
 		logger.info("" + dao);
 		System.out.println("test---------------------------");
 	}
+	
+	@Test
+	public void testGoogleVisionAPI() throws IOException, GeneralSecurityException {
+		String[] args = {"C:/Users/Songyi/git/SpringRestful/SpringRESTExample/src/test/java/com/avaldes/tutorial/cat.jpg"};
+		LabelApp.main(args);
+	}
 
-	 @Test
+//	@Test
 	public void test() throws IOException {
 		System.out.println("send file test---------------------------");
 		final String FILENAME = "C:/Users/Songyi/git/SpringRestful/SpringRESTExample/src/test/java/com/avaldes/tutorial/test.json";
@@ -51,7 +62,7 @@ public class IngredientImgDaoImplTest extends AbstractTest {
 		BufferedReader br = null;
 		FileReader fr = null;
 		
-		/*System.out.println("test---------------------------");
+		System.out.println("test---------------------------");
 		logger.info("" + dao);
 		String workingDir = System.getProperty("user.dir");
 		System.out.println("Current working directory : " + workingDir);
@@ -97,7 +108,7 @@ public class IngredientImgDaoImplTest extends AbstractTest {
 
 			}
 
-		}*/
+		}
 
 		// creates a HTTP connection
 		URL url = new URL(UPLOAD_URL);
@@ -169,11 +180,11 @@ public class IngredientImgDaoImplTest extends AbstractTest {
 	}
 
 //	@Test
-	public void registerTest() throws FileNotFoundException {
+	public void registerTest() throws IOException, ParseException {
 		final String FILENAME = "C:/Users/Songyi/git/SpringRestful/SpringRESTExample/src/test/java/com/avaldes/tutorial/test.json";
 		
 		//console에 출력
-		/*BufferedReader br = null;
+		BufferedReader br = null;
 		FileReader fr = null;
 
 		try {
@@ -185,10 +196,12 @@ public class IngredientImgDaoImplTest extends AbstractTest {
 
 			br = new BufferedReader(new FileReader(FILENAME));
 
+			String a = null;
+			
 			while ((sCurrentLine = br.readLine()) != null) {
 				System.out.println(sCurrentLine);
 			}
-
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -200,6 +213,29 @@ public class IngredientImgDaoImplTest extends AbstractTest {
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
+		}
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader(FILENAME));
+		JSONObject jsonObject = (JSONObject) obj;
+		
+		JSONArray requests = (JSONArray) jsonObject.get("requests");
+		Iterator<Object> iterator = requests.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+ 
+		/*String name = (String) jsonObject.get("name");
+		System.out.println(name);
+ 
+		long age = (Long) jsonObject.get("age");
+		System.out.println(age);
+ 
+		// loop array
+		JSONArray msg = (JSONArray) jsonObject.get("messages");
+		Iterator<String> iterator = msg.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
 		}*/
 		
 		//file 내용을 디비에 저장
@@ -212,7 +248,7 @@ public class IngredientImgDaoImplTest extends AbstractTest {
 		vo.setTags("yes");
 
 		// DB에 넣고 DB테이블에서 직접 확인해봐야 한다.
-		dao.insert(vo);
+//		dao.insert(vo);
 		System.out.println("registerTest---------------------------");
 	}
 

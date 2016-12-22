@@ -14,6 +14,14 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.google.api.client/google-api-client-googleapis-auth-oauth -->
+	
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-vision</artifactId>
+			<version>v1-rev30-1.22.0</version>
+		</dependency>
+			
 	
 		<!-- Apache Commons FileUpload -->
 		<dependency>

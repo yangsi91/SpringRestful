@@ -50,15 +50,15 @@ public class IngredientController {
 	@Inject
 	private IngredientDao ingredientDao;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="/list", method=RequestMethod.GET)
 	@ResponseBody
-	public List<Ingredient> getAllUsers() {
+	public HashMap<String, List<Ingredient>> getAllUsers() {
 		logger.info("Inside getAllUers() method...");
 		System.out.println("aaa");
 		return ingredientDao.getList();
 	}
 	
-	@RequestMapping(value="/{ingredient_id}", method=RequestMethod.GET)
+	@RequestMapping(value="/data/{ingredient_id}", method=RequestMethod.GET)
 	@ResponseBody
 	public Ingredient getIssuerByTicker(@PathVariable("ingredient_id") int ingredient_id) {
 		Ingredient ingredient = ingredientDao.getIngredient(ingredient_id); 
