@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kitchen.mapper.RecipeMapper">
+
+	<!-- 이거에 접근할 때 namespace.id 로 접근한다. -->
+	<!-- resultType은 자바의 타입과 매핑되는 것이 있다. 여기선 string이 java.lang.String과 매핑 -->
+	
+	<insert id="insert">
+		insert into recipe_id(title, img_location, details, details_id, created)
+		values( #{title} , #{img_location}, #{details}, #{details_id}, now() );
+	</insert>
+
+	<select id="getData" resultType="com.kitchen.model.Recipe">
+		select *
+		from recipe
+		where recipe_id = #{recipe_id};
+	
+	</select>
+	
+	<select id="getList" resultType="com.kitchen.model.Recipe">
+		select *
+		from recipe;
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from recipe where recipe_id = #{recipe_id};
+	</delete>
+	
+	<select id="getOuterjoinList" resultType="com.kitchen.model.RecipeFavorite">
+		select r.recipe_id, r.title, r.details, r.details_id, r.img_location, ifnull(f.favorite_id, 0) as star
+		from recipe r
+		left outer join (select favorite_id, recipe_id from favorite where favorite.product_id = #{product_id}) f on r.recipe_id=f.recipe_id;
+	</select>
+	
+</mapper>

@@ -165,7 +165,7 @@ public class IngredientImgController {
 				try {
 
 					// 1. 서버의 IP와 서버의 동작 포트 값(8080)을 인자로 넣어 socket 생성
-					sock = new Socket("192.168.0.65", 8080);
+					sock = new Socket("192.168.100.175", 8080);
 					BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
 					// 2. 생성된 Socket으로부터 InputStream과 OutputStream을 구함

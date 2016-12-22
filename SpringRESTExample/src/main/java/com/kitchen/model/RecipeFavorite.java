@@ -1,13 +1,12 @@
 package com.kitchen.model;
 
-public class Recipe {
+public class RecipeFavorite {
 	private int recipe_id;
 	private String title;
 	private String details;
 	private int details_id;
 	private String img_location;
-	private String created;
-	private String updated;
+	private int star;
 	
 	public int getRecipe_id() {
 		return recipe_id;
@@ -33,23 +32,17 @@ public class Recipe {
 	public void setDetails_id(int details_id) {
 		this.details_id = details_id;
 	}
-	public String getCreated() {
-		return created;
-	}
-	public void setCreated(String created) {
-		this.created = created;
-	}
-	public String getUpdated() {
-		return updated;
-	}
-	public void setUpdated(String updated) {
-		this.updated = updated;
-	}
 	public String getImg_location() {
 		return img_location;
 	}
 	public void setImg_location(String img_location) {
 		this.img_location = img_location;
+	}
+	public int getStar() {
+		return star;
+	}
+	public void setStar(int star) {
+		this.star = star;
 	}
 	
 }
