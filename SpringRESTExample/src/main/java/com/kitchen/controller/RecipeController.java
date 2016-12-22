@@ -87,6 +87,15 @@ public class RecipeController {
 
 	@RequestMapping(value = "/favorite/list/{product_id}", method = RequestMethod.GET)
 	@ResponseBody
+	public HashMap<String, List<RecipeFavorite>> getLeftOuterjoinList(@PathVariable("product_id") int product_id) {
+		logger.info("Recipe getOuterjoinList() method...");
+		HashMap<String, List<RecipeFavorite>> hm = new HashMap<String, List<RecipeFavorite>>();
+		hm.put("list", recipeDao.getLeftouterjoinList(product_id));
+		return hm;
+	}
+	
+	@RequestMapping(value = "/myfavorite/list/{product_id}", method = RequestMethod.GET)
+	@ResponseBody
 	public HashMap<String, List<RecipeFavorite>> getOuterjoinList(@PathVariable("product_id") int product_id) {
 		logger.info("Recipe getOuterjoinList() method...");
 		HashMap<String, List<RecipeFavorite>> hm = new HashMap<String, List<RecipeFavorite>>();

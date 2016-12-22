@@ -28,10 +28,16 @@
 		delete from recipe where recipe_id = #{recipe_id};
 	</delete>
 	
-	<select id="getOuterjoinList" resultType="com.kitchen.model.RecipeFavorite">
+	<select id="getLeftouterjoinList" resultType="com.kitchen.model.RecipeFavorite">
 		select r.recipe_id, r.title, r.details, r.details_id, r.img_location, ifnull(f.favorite_id, 0) as star
 		from recipe r
 		left outer join (select favorite_id, recipe_id from favorite where favorite.product_id = #{product_id}) f on r.recipe_id=f.recipe_id;
+	</select>
+	
+	<select id="getOuterjoinList" resultType="com.kitchen.model.RecipeFavorite">
+		select r.recipe_id, r.title, r.details, r.details_id, r.img_location, ifnull(f.favorite_id, 0) as star
+		from recipe r
+		join (select favorite_id, recipe_id from favorite where favorite.product_id = #{product_id}) f on r.recipe_id=f.recipe_id;
 	</select>
 	
 </mapper>

@@ -16,7 +16,7 @@ import com.kitchen.model.Ingredient;;
 public class main2 {
 
 public static void main(String args[]) {
-		String url="http://192.168.0.20:8080/tutorial/api/favorite/create";
+		String url="http://192.168.0.20:8080/tutorial/api/favorite/delete";
 	  try {
 	   URL object=new URL(url);
 	 
@@ -31,7 +31,7 @@ public static void main(String args[]) {
 	 
 	   JSONObject obj = new JSONObject();
 	   
-	   obj.put("recipe_id", 5);
+	   obj.put("favorite_id", 7);
 	   obj.put("product_id", 1);
 //	   obj.put("password", "OH");
 	   

@@ -56,7 +56,7 @@ public class FavoriteController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
-	public String createDataByJSON(@RequestBody String body)
+	public int createDataByJSON(@RequestBody String body)
 			throws ParseException, JsonParseException, JsonMappingException, IOException {
 		if (body != null) {
 			logger.info("Favorite add, adding: " + body);
@@ -69,12 +69,26 @@ public class FavoriteController {
 
 		favoriteDao.insert(addFavorite);
 		System.out.println(body);
-		return body;
+		return addFavorite.getFavorite_id();
 	}
 
-	@RequestMapping(value = "/delete/{favorite_id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
-	public Favorite delete(@PathVariable("recipe_id") int favorite_id) {
+	public Favorite delete(@RequestBody String body) throws ParseException, JsonParseException, JsonMappingException, IOException {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Favorite delFavorite = mapper.readValue(body, Favorite.class);
+
+		favoriteDao.delete(delFavorite.getFavorite_id());
+		System.out.println(body);
+		
+		return delFavorite;
+	}
+}
+	
+/*	@RequestMapping(value = "/delete/{favorite_id}", method = RequestMethod.POST)
+	@ResponseBody
+	public Favorite delete(@PathVariable("favorite_id") int favorite_id) {
 		Favorite delFavorite = favoriteDao.getData(favorite_id);
 		favoriteDao.delete(favorite_id);
 		if (delFavorite != null) {
@@ -85,4 +99,4 @@ public class FavoriteController {
 		return delFavorite;
 	}
 	
-}
+}*/
