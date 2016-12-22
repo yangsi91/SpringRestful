@@ -1,12 +1,27 @@
 package com.kitchen.model;
 
-public class Recipe_details {
+public class RecipeDetails {
 	private int details_id;
 	private int recipe_id;
 	private int step;
+	private String contents;
+	private String updated;
+	private String created;
 	
 	public int getDetails_id() {
 		return details_id;
+	}
+	public String getUpdated() {
+		return updated;
+	}
+	public void setUpdated(String updated) {
+		this.updated = updated;
+	}
+	public String getCreated() {
+		return created;
+	}
+	public void setCreated(String created) {
+		this.created = created;
 	}
 	public void setDetails_id(int details_id) {
 		this.details_id = details_id;
@@ -29,6 +44,6 @@ public class Recipe_details {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	private String contents; //이미지와 관련 설명이 들어가는 부분. 파일경로 링크 넘겨주기
+//	private String contents; 이미지와 관련 설명이 들어가는 부분. 파일경로 링크 넘겨주기
 	
 }
