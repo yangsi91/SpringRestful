@@ -64,7 +64,7 @@ public class RestController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
+		//${serverTime}
 		return "status";
 	}
 	

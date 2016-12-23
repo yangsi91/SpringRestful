@@ -75,6 +75,15 @@ public class RecipeController {
 	@Inject
 	private RecipeDao recipeDao;
 
+	@RequestMapping(value = "/details/{recipe_id}", method = RequestMethod.GET)
+	public ModelAndView recipeDetailView(@PathVariable("recipe_id") int recipe_id) {
+		Recipe recipe = recipeDao.getRecipe(recipe_id);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("detail");
+		mv.addObject("details", recipe.getDetails());
+		return mv;
+	}
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<Recipe>> getList() {

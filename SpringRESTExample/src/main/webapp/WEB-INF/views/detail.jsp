@@ -1,4 +1,11 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+ 
+<%@page import="java.util.*"%>
+<%
+ 
+    request.setCharacterEncoding("UTF-8");
+ 
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -38,10 +45,7 @@
 
 
 	<div class="container"></div>
-
-
-
-
+	${details}
 
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
