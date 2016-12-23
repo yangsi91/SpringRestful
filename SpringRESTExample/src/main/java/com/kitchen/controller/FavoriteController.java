@@ -79,7 +79,7 @@ public class FavoriteController {
 		ObjectMapper mapper = new ObjectMapper();
 		Favorite delFavorite = mapper.readValue(body, Favorite.class);
 
-		favoriteDao.delete(delFavorite.getFavorite_id());
+		favoriteDao.delete(delFavorite);
 		System.out.println(body);
 		
 		return delFavorite;

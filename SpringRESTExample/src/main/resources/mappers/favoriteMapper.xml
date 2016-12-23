@@ -25,7 +25,7 @@
 	</select>
 	
 	<delete id="delete" parameterType="int">
-		delete from favorite where favorite_id = #{favorite_id};
+		delete from favorite where recipe_id=#{recipe_id} and product_id=#{product_id};
 	</delete>
 	
 </mapper>

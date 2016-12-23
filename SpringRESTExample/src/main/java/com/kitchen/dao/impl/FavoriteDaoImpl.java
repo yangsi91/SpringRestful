@@ -29,8 +29,8 @@ public class FavoriteDaoImpl implements FavoriteDao{
 	}
 
 	@Override
-	public void delete(int favorite_id) {
-		sqlSession.delete(namespace + ".delete", favorite_id);
+	public void delete(Favorite favorite) {
+		sqlSession.delete(namespace + ".delete", favorite);
 	}
 
 	@Override
