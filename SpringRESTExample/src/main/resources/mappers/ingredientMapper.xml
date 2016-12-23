@@ -24,6 +24,13 @@
 		from ingredient;
 	</select>
 	
+	<select id="getListByType" resultType="com.kitchen.model.Ingredient">
+		select *
+		from ingredient
+		where type_id=#{type_id};
+	</select>
+	
+	
 	<delete id="delete" parameterType="int">
 		delete from ingredient where ingredient_id = #{ingredient_id};
 	</delete>

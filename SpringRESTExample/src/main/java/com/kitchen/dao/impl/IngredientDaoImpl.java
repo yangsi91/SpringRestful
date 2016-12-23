@@ -35,10 +35,12 @@ public class IngredientDaoImpl implements IngredientDao{
 	}
 	
 	@Override
-	public HashMap<String, List<Ingredient>> getList(){
-		HashMap<String, List<Ingredient>> hm = new HashMap<String, List<Ingredient>>();
-		List<Ingredient> list = sqlSession.selectList(namespace + ".getList");
-		hm.put("list", list);
-		return hm;
+	public List<Ingredient> getList(){
+		return sqlSession.selectList(namespace + ".getList");
+	}
+
+	@Override
+	public List<Ingredient> getListByType() {
+		return sqlSession.selectList(namespace + ".getListByType");
 	}
 }

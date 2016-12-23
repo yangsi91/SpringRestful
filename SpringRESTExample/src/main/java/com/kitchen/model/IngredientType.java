@@ -1,8 +1,9 @@
 package com.kitchen.model;
 
-public class Ingredient_type {
+public class IngredientType {
 	private int type_id;
 	private String name;
+	private String img_location;
 	private String created;
 	private String updated;
 	
@@ -29,5 +30,11 @@ public class Ingredient_type {
 	}
 	public void setUpdated(String updated) {
 		this.updated = updated;
+	}
+	public String getImg_location() {
+		return img_location;
+	}
+	public void setImg_location(String img_location) {
+		this.img_location = img_location;
 	}
 }

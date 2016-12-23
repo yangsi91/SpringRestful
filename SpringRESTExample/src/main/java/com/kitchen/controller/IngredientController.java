@@ -37,6 +37,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kitchen.dao.IngredientDao;
 import com.kitchen.dao.UserDao;
 import com.kitchen.model.Ingredient;
+import com.kitchen.model.IngredientType;
 import com.kitchen.model.Issuer;
 import com.kitchen.model.Member;
 import com.kitchen.model.User;
@@ -54,8 +55,18 @@ public class IngredientController {
 	@ResponseBody
 	public HashMap<String, List<Ingredient>> getAllUsers() {
 		logger.info("Inside getAllUers() method...");
-		System.out.println("aaa");
-		return ingredientDao.getList();
+		HashMap<String, List<Ingredient>> hm = new HashMap<String, List<Ingredient>>();
+		hm.put("list", ingredientDao.getList());
+		return hm;
+	}
+	
+	@RequestMapping(value="/ingredientType/list/{type_id}", method=RequestMethod.GET)
+	@ResponseBody
+	public HashMap<String, List<Ingredient>> getListByIngredientType() {
+		logger.info("Inside getAllUers() method...");
+		HashMap<String, List<Ingredient>> hm = new HashMap<String, List<Ingredient>>();
+		hm.put("list", ingredientDao.getListByType());
+		return hm;
 	}
 	
 	@RequestMapping(value="/data/{ingredient_id}", method=RequestMethod.GET)

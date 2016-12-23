@@ -10,5 +10,6 @@ public interface IngredientDao {
 	public Ingredient getIngredient(int ingredient_id);
 //	public void update(Ingredient user);
 	public void delete(int ingredient_id);
-	public HashMap<String,List<Ingredient>> getList();
+	public List<Ingredient> getList();
+	public List<Ingredient> getListByType();
 }
