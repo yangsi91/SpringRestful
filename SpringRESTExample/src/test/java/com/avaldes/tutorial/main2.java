@@ -16,7 +16,7 @@ import com.kitchen.model.Ingredient;;
 public class main2 {
 
 public static void main(String args[]) {
-		String url="http://192.168.0.20:8080/tutorial/api/favorite/delete";
+		String url="http://192.168.0.20:8080/tutorial/api/ingredient/search";
 	  try {
 	   URL object=new URL(url);
 	 
@@ -31,17 +31,17 @@ public static void main(String args[]) {
 	 
 	   JSONObject obj = new JSONObject();
 	   
-	   obj.put("favorite_id", 7);
-	   obj.put("product_id", 1);
+//	   obj.put("favorite_id", 7);
+//	   obj.put("product_id", 1);
 //	   obj.put("password", "OH");
 	   
 	   
-//	   obj.put("kor_name", "ingrediKor");
-//	   obj.put("eng_names", "ingredientEngs");
+//	   obj.put("kor_name", "한국이름");
+	   obj.put("eng_names", "onion");
 //	   obj.put("img_location", "/user/img.jpg");
 //	   obj.put("type_id", "2");
 	   	      
-/*	// Array List 만들기
+/*	// Array List 留��ㅺ린
 	   JSONObject params = new JSONObject();
 	   params.put("password", "*******");
 	   JSONArray list1 = new JSONArray();
@@ -60,11 +60,11 @@ public static void main(String args[]) {
 	 
 	   System.out.println(obj.toString());
 	   
-	   ObjectMapper mapper = new ObjectMapper();
+//	   ObjectMapper mapper = new ObjectMapper();
 //	   String jsonInString = "{\"id\":\"jsontest\",\"name\":\"your name\",\"password\":\"PPAP\"}";
 //	   User user = mapper.readValue(obj.toString(), User.class);
-	   Favorite user = mapper.readValue(obj.toString(), Favorite.class);
-	   System.out.println(user);
+//	   Favorite user = mapper.readValue(obj.toString(), Favorite.class);
+//	   System.out.println(user);
 
 		
 		

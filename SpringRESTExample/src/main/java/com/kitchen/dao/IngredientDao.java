@@ -12,4 +12,5 @@ public interface IngredientDao {
 	public void delete(int ingredient_id);
 	public List<Ingredient> getList();
 	public List<Ingredient> getListByType();
+	public List<Ingredient> searchIngredient(String ingredientStr);
 }

@@ -30,6 +30,14 @@
 		where type_id=#{type_id};
 	</select>
 	
+	<select id="searchIngredient" resultType="com.kitchen.model.Ingredient">
+		<!-- <bind name="pattern" value="'%'+ingredientStr+'%'" /> -->
+		select *
+		from ingredient
+		WHERE eng_names = #{pattern}
+		<!-- where eng_names like CONCAT(‘%’, #{ingredientStr}, ‘%’); -->
+		<!-- where kor_name = #{ingredientStr}; concat('%',#{ingredientStr},'%'); -->
+	</select>
 	
 	<delete id="delete" parameterType="int">
 		delete from ingredient where ingredient_id = #{ingredient_id};

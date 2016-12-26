@@ -59,10 +59,33 @@ public class IngredientController {
 		hm.put("list", ingredientDao.getList());
 		return hm;
 	}
+
+	@RequestMapping(value="/search", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, List<Ingredient>> searchIngredient(@RequestBody String ingredientStr) throws JsonParseException, JsonMappingException, IOException {
+//		System.out.println(ingredientStr);
+		ObjectMapper mapper = new ObjectMapper();
+		Ingredient serarchIngredient = mapper.readValue(ingredientStr, Ingredient.class);
+		
+		logger.info("Inside searchIngredient() method...");
+		HashMap<String, List<Ingredient>> hm = new HashMap<String, List<Ingredient>>();
+		hm.put("list", ingredientDao.searchIngredient(serarchIngredient.getEng_names()));
+		System.out.println(serarchIngredient.getEng_names());
+		System.out.println(hm);
+		return hm;
+	}
+	
+	@RequestMapping(value="/searchtest/{ingredientStr}", method=RequestMethod.GET)
+	@ResponseBody
+	public List<Ingredient> searchIngredient2(@PathVariable("ingredientStr")String ingredientStr) {
+//		System.out.println(ingredientStr);
+		System.out.println(ingredientStr);
+		return ingredientDao.searchIngredient(ingredientStr);
+	}
 	
 	@RequestMapping(value="/ingredientType/list/{type_id}", method=RequestMethod.GET)
 	@ResponseBody
-	public HashMap<String, List<Ingredient>> getListByIngredientType() {
+	public HashMap<String, List<Ingredient>> getListByIngredientType(@PathVariable("type_id") int type_id) {
 		logger.info("Inside getAllUers() method...");
 		HashMap<String, List<Ingredient>> hm = new HashMap<String, List<Ingredient>>();
 		hm.put("list", ingredientDao.getListByType());

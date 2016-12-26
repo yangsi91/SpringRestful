@@ -43,4 +43,9 @@ public class IngredientDaoImpl implements IngredientDao{
 	public List<Ingredient> getListByType() {
 		return sqlSession.selectList(namespace + ".getListByType");
 	}
+
+	@Override
+	public List<Ingredient> searchIngredient(String ingredientStr) {
+		return sqlSession.selectList(namespace + ".searchIngredient");
+	}
 }
