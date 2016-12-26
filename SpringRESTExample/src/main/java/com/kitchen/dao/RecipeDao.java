@@ -14,4 +14,5 @@ public interface RecipeDao {
 	public List<Recipe> getList();
 	public List<RecipeFavorite> getOuterjoinList(int product_id);
 	public List<RecipeFavorite> getLeftouterjoinList(int product_id);
+	public List<Recipe> getListByVision(String resultStr);
 }

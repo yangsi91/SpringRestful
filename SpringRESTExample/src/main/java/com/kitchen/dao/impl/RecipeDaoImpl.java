@@ -49,4 +49,9 @@ public class RecipeDaoImpl implements RecipeDao{
 	public List<RecipeFavorite> getLeftouterjoinList(int product_id) {
 		return sqlSession.selectList(namespace + ".getLeftouterjoinList", product_id);
 	}
+
+	@Override
+	public List<Recipe> getListByVision(String resultStr) {
+		return sqlSession.selectList(namespace + ".getListByVision", resultStr);
+	}
 }

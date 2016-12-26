@@ -157,4 +157,87 @@ public class RecipeController {
 		return delRecipe;
 	}
 	
+	
+	@RequestMapping(value = "/test/{str}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Recipe> test(@PathVariable String str)
+			throws IOException {
+		String resultStr = "%" + str + "%";
+		System.out.println(resultStr);
+		return recipeDao.getListByVision(resultStr);
+	}
+	
+	//異���: http://www.journaldev.com/2573/spring-mvc-file-upload-example-single-multiple-files
+	@RequestMapping(value = "/uploadfiles", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Recipe> uploadFiles(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2)
+			throws IOException {
+		PrintWriter pw;
+		BufferedReader br;
+		Socket sock;
+		String line = null;
+		if (!file1.isEmpty() && !file2.isEmpty()) {
+			try {
+				byte[] bytes = file1.getBytes();
+				File dir = new File("E:/workspace" + "tmpFiles");
+				if (!dir.exists())
+					dir.mkdirs();
+
+				// Create the file on server
+				File serverFile1 = new File(dir.getAbsolutePath() + File.separator + file1.getOriginalFilename());
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile1));
+				stream.write(bytes);
+				stream.close();
+
+				bytes = file2.getBytes();
+				dir = new File("E:/workspace" + "tmpFiles");
+				if (!dir.exists())
+					dir.mkdirs();
+
+				// Create the file on server
+				File serverFile2 = new File(dir.getAbsolutePath() + File.separator + file2.getOriginalFilename());
+				stream = new BufferedOutputStream(new FileOutputStream(serverFile2));
+				stream.write(bytes);
+				stream.close();
+
+				String[] args = { serverFile2.getAbsolutePath() };
+
+				
+				//異���: http://blog.naver.com/PostView.nhn?blogId=cyberhole&logNo=110133796544
+				try {
+
+					// 1. ��踰��� IP�� ��踰��� ���� �ы�� 媛�(8080)�� �몄��濡� �ｌ�� socket ����
+					sock = new Socket("192.168.100.175", 8080);
+					BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+
+					// 2. ���깅�� Socket�쇰�遺��� InputStream怨� OutputStream�� 援ы��
+					OutputStream out = sock.getOutputStream();
+					InputStream in = sock.getInputStream();
+
+					// 3. InputStream�� BufferedReader �����쇰� 蹂���
+					// OutputStream�� PrintWriter �����쇰� 蹂���
+					pw = new PrintWriter(new OutputStreamWriter(out));
+
+					// 4. �ㅻ낫��濡�遺��� �� 以��� ���λ��� BufferedReader 媛�泥� ����
+					br = new BufferedReader(new InputStreamReader(in));
+					line = "%" + LabelApp.main(args) + "%";;
+					System.out.println(line);
+					// 6. PrintWriter�� ���� println() 硫�����瑜� �댁�⑺�� ��踰���寃� ����
+					pw.println(line);
+					pw.flush();
+					
+					
+				} finally {
+				}
+
+				pw.close();
+				br.close();
+				sock.close();
+				
+			} catch (Exception e) {
+			}
+		}
+		System.out.println(recipeDao.getListByVision(line));
+		return recipeDao.getListByVision(line);
+	}
 }

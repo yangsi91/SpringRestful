@@ -37,7 +37,7 @@ public static void main(String args[]) {
 	   
 	   
 //	   obj.put("kor_name", "한국이름");
-	   obj.put("eng_names", "onion");
+	   obj.put("eng_names", "ar");
 //	   obj.put("img_location", "/user/img.jpg");
 //	   obj.put("type_id", "2");
 	   	      

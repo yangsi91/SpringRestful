@@ -40,4 +40,10 @@
 		join (select favorite_id, recipe_id from favorite where favorite.product_id = #{product_id}) f on r.recipe_id=f.recipe_id;
 	</select>
 	
+	<select id="getListByVision" resultType="com.kitchen.model.Recipe">
+		select *
+		from recipe
+		where img_location like #{resultStr};
+		<!-- CONCAT(‘%’, #{resultStr}, ‘%’); -->
+	</select>
 </mapper>

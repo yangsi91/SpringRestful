@@ -1,6 +1,5 @@
 package com.kitchen.dao.impl;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -45,7 +44,7 @@ public class IngredientDaoImpl implements IngredientDao{
 	}
 
 	@Override
-	public List<Ingredient> searchIngredient(String ingredientStr) {
-		return sqlSession.selectList(namespace + ".searchIngredient");
+	public List<Ingredient> getListByVision(String resultStr) {
+		return sqlSession.selectList(namespace + ".getListByVision", resultStr);
 	}
 }

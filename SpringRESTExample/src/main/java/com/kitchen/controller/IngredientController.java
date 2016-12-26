@@ -40,6 +40,7 @@ import com.kitchen.model.Ingredient;
 import com.kitchen.model.IngredientType;
 import com.kitchen.model.Issuer;
 import com.kitchen.model.Member;
+import com.kitchen.model.Recipe;
 import com.kitchen.model.User;
 import com.mysql.fabric.Response;
 
@@ -60,27 +61,29 @@ public class IngredientController {
 		return hm;
 	}
 
-	@RequestMapping(value="/search", method=RequestMethod.POST)
+/*	@RequestMapping(value="/search", method=RequestMethod.POST)
 	@ResponseBody
 	public HashMap<String, List<Ingredient>> searchIngredient(@RequestBody String ingredientStr) throws JsonParseException, JsonMappingException, IOException {
-//		System.out.println(ingredientStr);
+		System.out.println(ingredientStr);
 		ObjectMapper mapper = new ObjectMapper();
 		Ingredient serarchIngredient = mapper.readValue(ingredientStr, Ingredient.class);
 		
+		String resultStr = "%" + "ar" + "%";
+		
 		logger.info("Inside searchIngredient() method...");
 		HashMap<String, List<Ingredient>> hm = new HashMap<String, List<Ingredient>>();
-		hm.put("list", ingredientDao.searchIngredient(serarchIngredient.getEng_names()));
-		System.out.println(serarchIngredient.getEng_names());
+		hm.put("list", ingredientDao.getListByVision(resultStr));
+		System.out.println(resultStr);
 		System.out.println(hm);
 		return hm;
-	}
+	}*/
 	
-	@RequestMapping(value="/searchtest/{ingredientStr}", method=RequestMethod.GET)
+	@RequestMapping(value = "/test/{str}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Ingredient> searchIngredient2(@PathVariable("ingredientStr")String ingredientStr) {
-//		System.out.println(ingredientStr);
-		System.out.println(ingredientStr);
-		return ingredientDao.searchIngredient(ingredientStr);
+	public List<Ingredient> test(@PathVariable String str) {
+		String resultStr = "%" + str + "%";
+		System.out.println(resultStr);
+		return ingredientDao.getListByVision(resultStr);
 	}
 	
 	@RequestMapping(value="/ingredientType/list/{type_id}", method=RequestMethod.GET)

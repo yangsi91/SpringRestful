@@ -126,7 +126,7 @@ public class IngredientImgController {
 		return delIngredientImg;
 	}
 
-	//출저: http://www.journaldev.com/2573/spring-mvc-file-upload-example-single-multiple-files
+	//異���: http://www.journaldev.com/2573/spring-mvc-file-upload-example-single-multiple-files
 	@RequestMapping(value = "/uploadfiles", method = RequestMethod.POST)
 	@ResponseBody
 	public void uploadFiles(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2)
@@ -161,28 +161,28 @@ public class IngredientImgController {
 				String[] args = { serverFile2.getAbsolutePath() };
 
 				
-				//출저: http://blog.naver.com/PostView.nhn?blogId=cyberhole&logNo=110133796544
+				//異���: http://blog.naver.com/PostView.nhn?blogId=cyberhole&logNo=110133796544
 				try {
 
-					// 1. 서버의 IP와 서버의 동작 포트 값(8080)을 인자로 넣어 socket 생성
+					// 1. ��踰��� IP�� ��踰��� ���� �ы�� 媛�(8080)�� �몄��濡� �ｌ�� socket ����
 					sock = new Socket("192.168.100.175", 8080);
 					BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
-					// 2. 생성된 Socket으로부터 InputStream과 OutputStream을 구함
+					// 2. ���깅�� Socket�쇰�遺��� InputStream怨� OutputStream�� 援ы��
 					OutputStream out = sock.getOutputStream();
 					InputStream in = sock.getInputStream();
 
-					// 3. InputStream은 BufferedReader 형식으로 변환
-					// OutputStream은 PrintWriter 형식으로 변환
+					// 3. InputStream�� BufferedReader �����쇰� 蹂���
+					// OutputStream�� PrintWriter �����쇰� 蹂���
 					pw = new PrintWriter(new OutputStreamWriter(out));
 
-					// 4. 키보드로부터 한 줄씩 입력받는 BufferedReader 객체 생성
+					// 4. �ㅻ낫��濡�遺��� �� 以��� ���λ��� BufferedReader 媛�泥� ����
 					br = new BufferedReader(new InputStreamReader(in));
 
 					String line = null;
 
 					line = LabelApp.main(args);
-					// 6. PrintWriter에 있는 println() 메소드를 이용해 서버에게 전송
+					// 6. PrintWriter�� ���� println() 硫�����瑜� �댁�⑺�� ��踰���寃� ����
 					pw.println(line);
 					pw.flush();
 				} finally {
