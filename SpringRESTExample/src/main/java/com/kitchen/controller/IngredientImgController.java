@@ -187,9 +187,12 @@ public class IngredientImgController {
 					String line = null;
 
 					line = LabelApp.main(args);
+					System.out.println(line);
 					// 6. PrintWriter�� ���� println() 硫�����瑜� �댁�⑺�� ��踰���寃� ����
 					pw.println(line);
 					pw.flush();
+					
+					System.out.println(line);
 				} finally {
 				}
 
