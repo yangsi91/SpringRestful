@@ -25,7 +25,7 @@ public class ProductController {
 	@Inject
 	private ProductDao productDao;
 
-	//레시피에 필요한 재료 목록
+	//product 이름으로 key값 가져오기
 	@RequestMapping(value = "/data/{name}", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<Product>> getProductId(@PathVariable("name") String name) {
