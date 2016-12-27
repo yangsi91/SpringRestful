@@ -5,6 +5,7 @@ public class Cook {
 	private int ingredient_id;
 	private int amount;
 	private int handling_id;
+	private String measurement;
 	private String created;
 	private String updated;
 	
@@ -43,5 +44,11 @@ public class Cook {
 	}
 	public void setUpdated(String updated) {
 		this.updated = updated;
+	}
+	public String getMeasurement() {
+		return measurement;
+	}
+	public void setMeasurement(String measurement) {
+		this.measurement = measurement;
 	}
 }
