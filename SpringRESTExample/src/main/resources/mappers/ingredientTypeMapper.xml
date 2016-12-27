@@ -21,7 +21,7 @@
 	
 	<select id="getList" resultType="com.kitchen.model.IngredientType">
 		select *
-		from favorite;
+		from ingredient_type;
 	</select>
 	
 	<delete id="delete" parameterType="int">

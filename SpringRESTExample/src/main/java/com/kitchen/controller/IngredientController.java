@@ -94,7 +94,7 @@ public class IngredientController {
 	public HashMap<String, List<Ingredient>> getListByIngredientType(@PathVariable("type_id") int type_id) {
 		logger.info("Inside getAllUers() method...");
 		HashMap<String, List<Ingredient>> hm = new HashMap<String, List<Ingredient>>();
-		hm.put("list", ingredientDao.getListByType());
+		hm.put("list", ingredientDao.getListByType(type_id));
 		return hm;
 	}
 	

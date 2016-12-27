@@ -10,6 +10,6 @@ public interface IngredientDao {
 //	public void update(Ingredient user);
 	public void delete(int ingredient_id);
 	public List<Ingredient> getList();
-	public List<Ingredient> getListByType();
+	public List<Ingredient> getListByType(int type_id);
 	public List<Ingredient> getListByVision(String resultStr);
 }

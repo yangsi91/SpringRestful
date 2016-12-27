@@ -14,7 +14,7 @@
 
 	<select id="getIngredient" resultType="com.kitchen.model.Ingredient">
 		select *
-		from users
+		from ingredient
 		where ingredient_id = #{ingredient_id};
 	
 	</select>
@@ -39,5 +39,11 @@
 	<delete id="delete" parameterType="int">
 		delete from ingredient where ingredient_id = #{ingredient_id};
 	</delete>
+	
+	<select id="getListByVision" resultType="com.kitchen.model.Ingredient">
+		select *
+		from ingredient
+		where eng_names like #{resultStr};
+	</select>
 	
 </mapper>
