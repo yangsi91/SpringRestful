@@ -24,6 +24,7 @@ public class CookController {
 	@Inject
 	private CookDao cookDao;
 
+	//레시피에 필요한 재료 목록
 	@RequestMapping(value = "/list/{recipe_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<Cook>> getListByRecipeId(@PathVariable("recipe_id") int recipe_id) {

@@ -73,6 +73,7 @@ public class IngredientImgController {
 	@Inject
 	private IngredientImgDao ingredientImgDao;
 
+	//재료 이미지 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<IngredientImg> getAllUsers() {
@@ -81,6 +82,7 @@ public class IngredientImgController {
 		return ingredientImgDao.getList();
 	}
 
+	//재료 이미지 정보
 	@RequestMapping(value = "/data/{img_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public IngredientImg getIssuerByTicker(@PathVariable("img_id") int img_id) {
@@ -94,6 +96,7 @@ public class IngredientImgController {
 		return ingredientImg;
 	}
 
+	//재료 이미지 추가
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
 	public String createProductInJSON(@RequestBody String body)
@@ -113,6 +116,7 @@ public class IngredientImgController {
 		return body;
 	}
 
+	//재료 이미지 삭제
 	@RequestMapping(value = "/delete/{img_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public IngredientImg deleteIssuerByTicker(@PathVariable("img_id") int img_id) {
@@ -126,6 +130,7 @@ public class IngredientImgController {
 		return delIngredientImg;
 	}
 
+	//카메라 서버에서 재료 이미지 파일과 basecode 파일 받고, Google Vision Api로 결과값 받아오기
 	//異���: http://www.journaldev.com/2573/spring-mvc-file-upload-example-single-multiple-files
 	@RequestMapping(value = "/uploadfiles", method = RequestMethod.POST)
 	@ResponseBody

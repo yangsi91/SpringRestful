@@ -75,6 +75,7 @@ public class RecipeController {
 	@Inject
 	private RecipeDao recipeDao;
 
+	//레시피 web view
 	@RequestMapping(value = "/details/{recipe_id}", method = RequestMethod.GET)
 	public ModelAndView recipeDetailView(@PathVariable("recipe_id") int recipe_id) {
 		Recipe recipe = recipeDao.getRecipe(recipe_id);
@@ -84,6 +85,7 @@ public class RecipeController {
 		return mv;
 	}
 	
+	//레시피 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<Recipe>> getList() {
@@ -94,6 +96,7 @@ public class RecipeController {
 		
 	}
 
+	//기기별 레시피 즐겨찾기 목록(이건 사용하지 않음...)
 	@RequestMapping(value = "/favorite/list/{product_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<RecipeFavorite>> getLeftOuterjoinList(@PathVariable("product_id") int product_id) {
@@ -103,6 +106,7 @@ public class RecipeController {
 		return hm;
 	}
 	
+	//기기별 레시피 즐겨찾기 목록
 	@RequestMapping(value = "/myfavorite/list/{product_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<RecipeFavorite>> getOuterjoinList(@PathVariable("product_id") int product_id) {
@@ -111,7 +115,8 @@ public class RecipeController {
 		hm.put("list", recipeDao.getOuterjoinList(product_id));
 		return hm;
 	}
-	
+
+	//레시피 정보
 	@RequestMapping(value = "/data/{recipe_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, Recipe> getData(@PathVariable("recipe_id") int recipe_id) {
@@ -126,6 +131,7 @@ public class RecipeController {
 		return hm;
 	}
 
+	//레시피 추가
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
 	public String createDataByJSON(@RequestBody String body)
@@ -144,6 +150,7 @@ public class RecipeController {
 		return body;
 	}
 
+	//레시피 삭제
 	@RequestMapping(value = "/delete/{recipe_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Recipe delete(@PathVariable("recipe_id") int recipe_id) {
@@ -157,7 +164,7 @@ public class RecipeController {
 		return delRecipe;
 	}
 	
-	
+	//레시피 검색
 	@RequestMapping(value = "/test/{str}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Recipe> test(@PathVariable String str)
@@ -167,6 +174,7 @@ public class RecipeController {
 		return recipeDao.getListByVision(resultStr);
 	}
 	
+	//받은 사진 분석한 라벨 값에 대한 레시피 검색
 	//異���: http://www.journaldev.com/2573/spring-mvc-file-upload-example-single-multiple-files
 	@RequestMapping(value = "/uploadfiles", method = RequestMethod.POST)
 	@ResponseBody

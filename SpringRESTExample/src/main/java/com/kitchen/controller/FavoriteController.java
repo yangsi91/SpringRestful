@@ -30,6 +30,7 @@ public class FavoriteController {
 	@Inject
 	private FavoriteDao favoriteDao;
 
+	//즐겨찾기 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<Favorite>> getList() {
@@ -40,6 +41,7 @@ public class FavoriteController {
 		
 	}
 	
+	//1개의 즐겨찾기에 대한 정보
 	@RequestMapping(value = "/data/{favorite_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, Favorite> getData(@PathVariable("favorite_id") int favorite_id) {
@@ -54,6 +56,7 @@ public class FavoriteController {
 		return hm;
 	}
 
+	//즐겨찾기 추가
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
 	public int createDataByJSON(@RequestBody String body)
@@ -72,6 +75,7 @@ public class FavoriteController {
 		return addFavorite.getFavorite_id();
 	}
 
+	//즐겨찾기 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public Favorite delete(@RequestBody String body) throws ParseException, JsonParseException, JsonMappingException, IOException {

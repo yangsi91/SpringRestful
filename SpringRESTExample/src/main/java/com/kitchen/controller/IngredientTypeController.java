@@ -30,6 +30,7 @@ public class IngredientTypeController {
 	@Inject
 	private IngredientTypeDao ingredientTypeDao;
 
+	//재료 타입 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<IngredientType>> getList() {
@@ -40,6 +41,7 @@ public class IngredientTypeController {
 		
 	}
 	
+	//재료 타입 정보
 	@RequestMapping(value = "/data/{type_id}", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, IngredientType> getData(@PathVariable("type_id") int type_id) {
@@ -54,6 +56,7 @@ public class IngredientTypeController {
 		return hm;
 	}
 
+	//재료 타입 추가
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
 	public int createDataByJSON(@RequestBody String body)
@@ -71,6 +74,7 @@ public class IngredientTypeController {
 		return ingredientTypeDao.insert(addIngredientType);
 	}
 
+	//재료 타입 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public IngredientType delete(@RequestBody String body) throws ParseException, JsonParseException, JsonMappingException, IOException {

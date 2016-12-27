@@ -52,6 +52,7 @@ public class IngredientController {
 	@Inject
 	private IngredientDao ingredientDao;
 	
+	//재료 목록
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<Ingredient>> getAllUsers() {
@@ -78,6 +79,7 @@ public class IngredientController {
 		return hm;
 	}*/
 	
+	//재료 검색
 	@RequestMapping(value = "/test/{str}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Ingredient> test(@PathVariable String str) {
@@ -86,6 +88,7 @@ public class IngredientController {
 		return ingredientDao.getListByVision(resultStr);
 	}
 	
+	//타입별 재료 목록
 	@RequestMapping(value="/ingredientType/list/{type_id}", method=RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, List<Ingredient>> getListByIngredientType(@PathVariable("type_id") int type_id) {
@@ -95,6 +98,7 @@ public class IngredientController {
 		return hm;
 	}
 	
+	//재료 정보
 	@RequestMapping(value="/data/{ingredient_id}", method=RequestMethod.GET)
 	@ResponseBody
 	public Ingredient getIssuerByTicker(@PathVariable("ingredient_id") int ingredient_id) {
@@ -108,7 +112,7 @@ public class IngredientController {
 		return ingredient;
 	}
 	
-	
+	//재료 추가
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
 	public String createProductInJSON(@RequestBody String body) throws ParseException, JsonParseException, JsonMappingException, IOException {
@@ -125,6 +129,7 @@ public class IngredientController {
 		return ""+addingredient;
 	}
 	  
+	//재료 삭제
 	@RequestMapping(value="/delete/{ingredient_id}", method=RequestMethod.GET)
 	@ResponseBody
 	public Ingredient deleteIssuerByTicker(@PathVariable("ingredient_id") int ingredient_id) {
